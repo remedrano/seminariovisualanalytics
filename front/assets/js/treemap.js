@@ -5,7 +5,7 @@
 
 	var margin = {top: 30, right: 0, bottom: 20, left: 0},
 		width = divWidth -25,
-		height = 1040 - margin.top - margin.bottom,
+		height = 910 - margin.top - margin.bottom,
 		formatNumber = d3.format(",.2%"),
 		colorDomain = [0, .1],
 		colorRange = ['#d4e7f3', '#2c89c4', '#1e5f89'],
