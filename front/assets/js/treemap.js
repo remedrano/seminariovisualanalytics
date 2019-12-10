@@ -6,9 +6,9 @@
 	var margin = {top: 30, right: 0, bottom: 20, left: 0},
 		width = divWidth -25,
 		height = 1040 - margin.top - margin.bottom,
-		formatNumber = d3.format(",%"),
-		colorDomain = [-.1, 0, .1],
-		colorRange = ['#dda8db', '#ebf2f7', '#9cbdd9'],
+		formatNumber = d3.format(",.2%"),
+		colorDomain = [0, .1],
+		colorRange = ['#d4e7f3', '#2c89c4', '#1e5f89'],
 		transitioning;
 
 	// sets x and y scale to determine size of visible boxes
@@ -53,14 +53,13 @@
 		.attr("x", 6)
 		.attr("y", 6 - margin.top)
 		.attr("dy", ".75em");
-        
-        console.log( "legend with " , width + margin.left + margin.right );
+
 	var legend = d3.select("#legend").append("svg")
 	  .attr("width", width + margin.left + margin.right)
 	  .attr("height", 30)
 	  .attr('class', 'legend')
 	  .selectAll("g")
-		  .data([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
+		  .data([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])
 		  //.data([0,2,4,5,8,9,10,11,12,14,16,18])
 		  .enter()
 		  .append('g')
@@ -109,7 +108,8 @@
 
 	function colorIncrements(d){
 		return (colorDomain[colorDomain.length - 1] - colorDomain[0])/18*d + colorDomain[0];
-	}
+    }
+    
 
 	legend.append("rect")
 		.attr("x", function(d){return margin.left + d * 35})
@@ -119,9 +119,14 @@
 		.attr('height', '40px')
 
 	legend.append("text")
-			.text(function(d){return formatNumber(colorIncrements(d))})
+			.text(function(d){
+                
+                return "";
+            })
+
 			.attr('y', 20)
-			.attr('x', function(d){return margin.left + d * 35 + 20});
+			.attr('x', function(d){
+            return width + margin.left + margin.right});
 
 	// determines if white or black will be better contrasting color
 	function getContrast50(hexcolor){
@@ -129,7 +134,7 @@
 	}
 
 	d3.json("assets/data/arbolSiembraD3.json", function(root) {
-	  console.log(root)
+
 	  initialize(root);
 	  accumulate(root);
 	  layout(root);

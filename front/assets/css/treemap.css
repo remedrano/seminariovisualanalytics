@@ -1,5 +1,5 @@
 #chart {
-  max-width: 100%;
+  width: 100%;
   overflow:auto;
 }
 
@@ -48,6 +48,7 @@ rect.parent,
 
 .legend {
   margin-bottom:8px !important;
+  margin-left: 1px;
 }
 
 .legend rect {
